@@ -3,7 +3,7 @@ a 10
 b 6
 c x mod p
 d 12
-e 5
+e 6
 f (p1-1)(q1-1)
 g digital signature
 h active
@@ -33,7 +33,9 @@ c attacker have plaintexts p1, p2, and then he can get conressponding ciphertext
  (note: p1-p2 is coprime with 26)
   
 6 
-(a) ?
+(a) 
+function(x, p)
+  return x^(p-2) mod p; //x^(p-1) = 1 mod p 
 (b)
 a no
 b 18905
