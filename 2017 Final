@@ -106,7 +106,3 @@ Alice receives it and do (a^XB)^XA mod p as secret key. Then They use (a^XA*XB) 
 PRauth can only be decrypted by PUauth, so it is proved that this certificate is signed by CA. The man in the middle doesn't have PRauth,
 so he cannot forge anyone's certificate.
 
-
-
-
-(c)
