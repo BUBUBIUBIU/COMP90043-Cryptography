@@ -40,7 +40,7 @@ function(x, p)
 a no
 b 18905
 c 12 
-d 10 euler function
+d 13 fermat's function
 e 28
 
 7
@@ -91,7 +91,12 @@ V1 = V2
 
 (b)
 attacker can learn XA.
-k=???
+S2=k^(-1) * (m-XA*S1) mod q-1; S2'=k^(-1) * (m'-XA*S1) mod q-1;
+S2-S2'=( k^(-1) * (m-m') ) mod q-1;     note:(m-m') is coprime with q-1
+k^(-1)= (S2-S2')*(m-m')^(-1) mod q-1
+so attacker can get k
+m-XA*S1 = S2*k mod q-1; S1 is already known;
+XA= (m-S2*K)*S1^(-1) mod q-1
 
 11 *
 
