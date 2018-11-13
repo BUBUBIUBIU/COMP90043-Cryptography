@@ -6,31 +6,37 @@ d 12
 e 5
 f (p1-1)(q1-1)
 g digital signature
-h
-i
-j
+h active
+i TGS (p486)
+j certificate ? *
 
 2
 a i
 b i
-c 
-d
+c iv ? *
+d ii
 
 3 
-a
+a f (it is traffic padding)
 b T
-c 
-d
+c T 
+d T ? 
 
-4
+4 p452 ? *
 
 5
-a 26!/2^13
+a 26!/2^13; C(26,2)*C(24,2)*C(22,2)*...*C(2,2)
 b 26^m1~26^m2
-
+c attacker have plaintexts p1, p2, and then he can get conressponding ciphertexts c1, c2
+ (c1-c2) mod 26 = a*(p1-p2) mod 26 => a = (p1-p2)^(-1)*a*(p1-p2) mod 26
+ b= (c1-a*p1) mod 26 
+ (note: p1-p2 is coprime with 26)
+  
 6 
+(a) ?
+(b)
 a no
-b 18905'
+b 18905
 c 12 
 d 10 euler function
 e 28
@@ -53,6 +59,54 @@ x^4=x^2+x
 w=x^2+x+1
 t=x^2+x
 
+
+//
 8
+(a) hash function only provides integeity, but MAC provides authentication, confidentiality, integrity.
+
+(b) 
+i h(m) mod n = s^e mod n
+ii given a specific hash value h1 of x1, it is infeasible to find another value x2 so that h(x2)=h1
+iii attacker could find x2 to forge a signature same as signature of x1, (h(x1))^d=((h(x2)))^d
+
+9
+It is possible
+signature s of m is 
+s= m^d =(m1^3 * m2)^d mod n
+=(m1^d mod n)^3 *(m2^d mod n)^3
+=s1^3 * s2
+
+10 
+(a)signing
+S1 = a^k mod q; (k is coprime with q)
+S2 = k^(-1)*(m-XA*S1) mod (q-1); ( m=h(M) )
+verifying
+V1 = a^m mod q
+V2 = (YA)^S1 * (S1)^S2 mod q
+   = ( a^(XA*S1) * a^( k * k^(-1) * (m-XA*S1) )  )mod q
+   = ( a^(m mod q-1) ) mod q; (a^0 mod q = a^(q-1) mod q)
+V1 = V2
+
+(b)
+attacker can learn XA.
+k=
+
+11 *
+
+12
+(a) p prime, a generator
+Alice: private key XA; Bob: private key XB
+Alice sends (a^XA) mod p to Bob
+Bob receives it and do (a^XA)^XB mod p as secret key. and then sends (a^XB) mod p to Alice.
+Alice receives it and do (a^XB)^XA mod p as secret key. Then They use (a^XA*XB) mod p as symmetric key to comminicate.
+
+(b) Eve can intercept (a^XA) mod p of Alice and then send her own (a^XE) mod p to Alice ...画图
+
+(c)...不说了，画图吧
+PRauth can only be decrypted by PUauth, so it is proved that this certificate is signed by CA. The man in the middle doesn't have PRauth,
+so he cannot forge anyone's certificate.
 
 
+
+
+(c)
