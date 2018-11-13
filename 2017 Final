@@ -8,7 +8,7 @@ f (p1-1)(q1-1)
 g digital signature
 h active
 i TGS (p486)
-j public key ? *
+j public key 
 
 2
 a i
@@ -20,9 +20,13 @@ d ii
 a f (it is traffic padding)
 b T
 c T 
-d T ? 
+d T 
 
-4 p452 ? *
+4 
+1. something the individual knows: PIN
+2. something the individual have(process): physical key
+3. something the individual is (生理特征): figureprint, face 
+3. something the individual does: voice 
 
 5
 a 26!/2^13; C(26,2)*C(24,2)*C(22,2)*...*C(2,2)
@@ -65,6 +69,7 @@ t=x^2+x
 //
 8
 (a) hash function only provides integeity, but MAC provides authentication, confidentiality, integrity.
+workshop 有更详细答案
 
 (b) 
 i h(m) mod n = s^e mod n
@@ -98,7 +103,12 @@ so attacker can get k
 m-XA*S1 = S2*k mod q-1; S1 is already known;
 XA= (m-S2*K)*S1^(-1) mod q-1
 
-11 *
+11 
+(a) timestamp to verify timeliness
+(b) the clock of sender (KDC) is ahead of recipients (A or B), then opponent can intercept it and send it later in an appropriate time.
+(c) yes, attacker can compromise step 2 and step 3; enforce the requirement that parties regularly check their clocks against the KDC’s clock. 
+; relying on handshaking protocols using nonces. 
+(d) 学不动了，就这样吧 :-(
 
 12
 (a) p prime, a generator
