@@ -29,8 +29,8 @@ d T
 3. something the individual does: voice 
 
 5
-a 26!/( (2^13) * 13! );        C(26,2)*C(24,2)*C(22,2)*...*C(2,2)/A(13, 13)
-b 26^m1~26^m2
+a 26!/( (2^13) * 13! );        C(26,2)*C(24,2)*C(22,2)*...*C(2,2)/A(13, 13);  A(13,13)消除阶乘的排序性质
+b 26^m1~26^m213
 c attacker have plaintexts p1, p2, and then he can get conressponding ciphertexts c1, c2
  (c1-c2) mod 26 = a*(p1-p2) mod 26 => a = (p1-p2)^(-1)*a*(p1-p2) mod 26
  b= (c1-a*p1) mod 26 
